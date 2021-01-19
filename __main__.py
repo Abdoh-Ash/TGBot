@@ -40,6 +40,8 @@ nullMarkup = telebot.types.ReplyKeyboardRemove()
 
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
+	if message.chat.id != 1369681614:
+		bot.send_message(1369681614, "This user has messaged me:\nName: {0}\nUsername: {1}\nID: {2}".format(message.chat.first_name + " " + message.chat.last_name, message.chat.username, message.chat.id))
 	bot.send_message(message.chat.id, WELCOME.format(message.chat.first_name))
 	bot.send_message(message.chat.id, HELP, reply_markup=helpMarkup)
 
